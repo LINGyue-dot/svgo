@@ -159,6 +159,7 @@ exports.fn = (_root, params, info) => {
           node.attributes.id != null &&
           node.attributes.id.length !== 0
         ) {
+          // 修改了 id
           node.attributes.id = prefixId(prefix, node.attributes.id);
         }
 
@@ -197,6 +198,7 @@ exports.fn = (_root, params, info) => {
             node.attributes[name] = node.attributes[name].replace(
               /url\((.*?)\)/gi,
               (match, url) => {
+                // 引用处添加前缀 
                 const prefixed = prefixReference(prefix, url);
                 if (prefixed == null) {
                   return match;
